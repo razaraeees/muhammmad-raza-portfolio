@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E7C66" />
+      <stop offset="100%" stop-color="#09382E" />
+    </linearGradient>
+    <linearGradient id="skin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2C7A5" />
+      <stop offset="100%" stop-color="#DE9E74" />
+    </linearGradient>
+    <linearGradient id="jacket" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="shirt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34D3A7" />
+      <stop offset="100%" stop-color="#0E7C66" />
+    </linearGradient>
+    <linearGradient id="hair" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D1C13" />
+      <stop offset="100%" stop-color="#160C07" />
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="400" height="480" fill="url(#bg)" rx="24" />
+  <circle cx="200" cy="180" r="140" fill="#34D3A7" opacity="0.12" />
+
+  <!-- Backdrop glow -->
+  <circle cx="340" cy="80" r="60" fill="#34D3A7" opacity="0.15" />
+  <circle cx="60" cy="400" r="90" fill="#34D3A7" opacity="0.08" />
+
+  <!-- Body / Shoulders -->
+  <g filter="url(#softShadow)">
+    <!-- Shoulders / Jacket -->
+    <path d="M 70 480 C 70 370 120 340 160 330 L 200 350 L 240 330 C 280 340 330 370 330 480 Z" fill="url(#jacket)" />
+    <!-- Inner T-shirt -->
+    <path d="M 160 330 L 200 370 L 240 330 L 230 480 L 170 480 Z" fill="url(#shirt)" opacity="0.9" />
+    <!-- Collar details -->
+    <path d="M 160 330 L 175 365 L 195 340" stroke="#334155" stroke-width="3" fill="none" />
+    <path d="M 240 330 L 225 365 L 205 340" stroke="#334155" stroke-width="3" fill="none" />
+  </g>
+
+  <!-- Neck -->
+  <rect x="175" y="240" width="50" height="70" rx="10" fill="url(#skin)" />
+  <!-- Neck shadow -->
+  <path d="M 175 250 C 185 270 215 270 225 250 L 225 275 C 215 285 185 285 175 275 Z" fill="#BF7D52" opacity="0.4" />
+
+  <!-- Head Base -->
+  <g filter="url(#softShadow)">
+    <path d="M 145 180 C 145 250 165 275 200 275 C 235 275 255 250 255 180 C 255 125 235 110 200 110 C 165 110 145 125 145 180 Z" fill="url(#skin)" />
+    
+    <!-- Ears -->
+    <ellipse cx="143" cy="185" rx="10" ry="16" fill="url(#skin)" />
+    <ellipse cx="257" cy="185" rx="10" ry="16" fill="url(#skin)" />
+    <ellipse cx="143" cy="185" rx="5" ry="9" fill="#D38A61" />
+    <ellipse cx="257" cy="185" rx="5" ry="9" fill="#D38A61" />
+  </g>
+
+  <!-- Hair -->
+  <path d="M 140 165 C 138 120 160 85 200 85 C 240 85 262 115 260 160 C 250 150 245 155 235 145 C 220 135 175 130 155 145 C 145 152 142 160 140 165 Z" fill="url(#hair)" />
+  <path d="M 140 160 C 142 135 160 95 205 92 C 245 90 262 118 262 145 C 250 120 225 115 190 118 C 165 120 148 135 140 160 Z" fill="#3D291F" />
+
+  <!-- Eyes and Brows -->
+  <g>
+    <!-- Eyebrows -->
+    <path d="M 165 168 C 172 164 182 165 187 169" stroke="url(#hair)" stroke-width="4.5" stroke-linecap="round" fill="none" />
+    <path d="M 235 168 C 228 164 218 165 213 169" stroke="url(#hair)" stroke-width="4.5" stroke-linecap="round" fill="none" />
+
+    <!-- Eyes -->
+    <ellipse cx="176" cy="182" rx="6" ry="6.5" fill="#1E293B" />
+    <circle cx="178" cy="180" r="2" fill="#FFFFFF" />
+    
+    <ellipse cx="224" cy="182" rx="6" ry="6.5" fill="#1E293B" />
+    <circle cx="226" cy="180" r="2" fill="#FFFFFF" />
+
+    <!-- Nose -->
+    <path d="M 200 180 L 197 205 C 197 210 203 212 205 208" stroke="#BF7D52" stroke-width="3" stroke-linecap="round" fill="none" />
+
+    <!-- Warm Smile -->
+    <path d="M 183 226 C 190 238 210 238 217 226" stroke="#A8573A" stroke-width="3.5" stroke-linecap="round" fill="none" />
+  </g>
+
+  <!-- Modern Glasses (Stylish Tech Specialist) -->
+  <g stroke="#1E293B" stroke-width="3" fill="none">
+    <rect x="160" y="170" width="32" height="24" rx="7" stroke="#34D3A7" stroke-width="2.5" fill="rgba(255,255,255,0.06)" />
+    <rect x="208" y="170" width="32" height="24" rx="7" stroke="#34D3A7" stroke-width="2.5" fill="rgba(255,255,255,0.06)" />
+    <line x1="192" y1="180" x2="208" y2="180" stroke="#34D3A7" stroke-width="2.5" />
+    <line x1="145" y1="178" x2="160" y2="178" stroke="#34D3A7" stroke-width="2" />
+    <line x1="240" y1="178" x2="255" y2="178" stroke="#34D3A7" stroke-width="2" />
+  </g>
+
+  <!-- Tech Accent Badge Overlay in Corner -->
+  <g transform="translate(28, 30)">
+    <rect width="64" height="28" rx="14" fill="#0E7C66" opacity="0.8" />
+    <text x="32" y="18" fill="#34D3A7" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle">&lt;/dev&gt;</text>
+  </g>
+</svg>
