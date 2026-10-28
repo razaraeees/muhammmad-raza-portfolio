@@ -22,38 +22,61 @@ export default function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [copiedEmail, setCopiedEmail] = useState(false);
 
+
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const d = Object.fromEntries(formData) as Record<string, string>;
     const err: Record<string, string> = {};
 
-    if (!d.name?.trim()) err.name = "Please enter your name.";
-    if (!/^\S+@\S+\.\S+$/.test(d.email || ""))
+    if (!d.name?.trim()) {
+      err.name = "Please enter your name.";
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email || "")) {
       err.email = "Please enter a valid email address.";
-    if ((d.message || "").trim().length < 10)
+    }
+
+    if ((d.message || "").trim().length < 10) {
       err.message = "Message must be at least 10 characters.";
+    }
 
     setErrors(err);
+
     if (Object.keys(err).length > 0) return;
 
     setStatus("sending");
+
     try {
       const endpoint = import.meta.env.VITE_FORM_ENDPOINT || "/api/contact";
-      const res = await fetch(endpoint, {
+
+      const response = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(d),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: d.name,
+          email: d.email,
+          lookingToBuild: d.subject,
+          message: d.message,
+        }),
       });
 
-      if (!res.ok) throw new Error("Submission failed");
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
       setStatus("success");
-      (e.target as HTMLFormElement).reset();
-    } catch {
-      // In dev/demo without backend endpoint, show success for great UX if requested or fallback to direct mail
-      setStatus("success");
+      form.reset();
+    } catch (error) {
+      console.error("Contact form error:", error);
+      setStatus("error");
     }
   }
+
 
   const copyEmail = () => {
     navigator.clipboard.writeText(profile.email);
@@ -62,10 +85,9 @@ export default function Contact() {
   };
 
   const inputClass = (field: string) =>
-    `mt-1.5 w-full rounded-xl border bg-white/70 px-4 py-3 text-sm text-zinc-900 transition-all duration-200 placeholder:text-zinc-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent dark:border-zinc-700/80 dark:bg-zinc-900/60 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-accent-dark dark:focus:ring-accent-dark/20 ${
-      errors[field]
-        ? "border-red-500/80 focus:border-red-500 focus:ring-red-500/20"
-        : "border-zinc-200/90"
+    `mt-1.5 w-full rounded-xl border bg-white/70 px-4 py-3 text-sm text-zinc-900 transition-all duration-200 placeholder:text-zinc-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent dark:border-zinc-700/80 dark:bg-zinc-900/60 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-accent-dark dark:focus:ring-accent-dark/20 ${errors[field]
+      ? "border-red-500/80 focus:border-red-500 focus:ring-red-500/20"
+      : "border-zinc-200/90"
     }`;
 
   return (
@@ -294,7 +316,7 @@ export default function Contact() {
                 {/* Submit button & Status message */}
                 <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <Button
-                    onClick={() => {}}
+                    onClick={() => { }}
                     className="w-full sm:w-auto"
                   >
                     {status === "sending" ? (

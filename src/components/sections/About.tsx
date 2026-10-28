@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { profile } from "@/data/profile";
 import { Button, Card, CountUp, Reveal, Section } from "@/components/ui";
+import ProfilePic from "@/assets/raza-portfolio-image.png";
 
 const factIcons = {
   MapPin,
@@ -21,7 +22,6 @@ const factIcons = {
 };
 
 export default function About() {
-  const [imgError, setImgError] = useState(false);
 
   return (
     <Section
@@ -52,8 +52,7 @@ export default function About() {
               className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-zinc-300/80 bg-zinc-200/80 shadow-xl shadow-zinc-900/5 dark:border-zinc-700/80 dark:bg-zinc-800"
             >
               <img
-                src={imgError ? "/avatar.svg" : "/profile.jpg"}
-                onError={() => setImgError(true)}
+                src={ProfilePic}
                 alt={`Portrait of ${profile.name}`}
                 className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
               />

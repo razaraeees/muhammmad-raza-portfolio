@@ -7,7 +7,7 @@ export const profile = {
     "Full-Stack Developer",
     "Laravel & PHP Specialist",
     "Vue.js & React.js Developer",
-    "ERP & CRM System Architect"
+    "ERP & Business Applications"
   ],
   location: "Karachi, Pakistan",
   phone: "0325-9276877",
